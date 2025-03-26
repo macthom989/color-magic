@@ -1,12 +1,13 @@
 'use client'
 
-import {Moon, Sun} from "lucide-react";
 import {useEffect, useState} from "react";
 import Link from "next/link";
+import {SwitchTheme} from "@/components/switch-theme";
+import {cn} from "@/lib/utils";
+import Logo from "@/components/layout/logo";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,45 +18,23 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const toggleDarkMode = () => {
-        if (darkMode) {
-            document.documentElement.classList.remove("dark");
-            setDarkMode(false);
-        } else {
-            document.documentElement.classList.add("dark");
-            setDarkMode(true);
-        }
-    };
-
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                scrolled ? "glass py-3 shadow-sm" : "py-5"
-            }`}
+            className={cn('fixed top-0 left-0 right-0 z-50 transition-all duration-300  py-5', {"shadow-sm bg-background dark:bg-background": scrolled})}
         >
             <div className="container mx-auto flex items-center justify-between">
-                <Link
-                    href="/"
-                    className="font-medium text-xl transition-opacity hover:opacity-80"
-                >
-                    ColorConvert
-                </Link>
+                <Logo/>
 
                 <nav className="hidden md:flex space-x-8">
                     <NavLink href="/">Home</NavLink>
                     <NavLink href="/">Convert</NavLink>
                     <NavLink href="/">Palettes</NavLink>
                     <NavLink href="/">Tools</NavLink>
+                    <NavLink href="/about">About</NavLink>
                 </nav>
 
                 <div className="flex items-center space-x-4">
-                    <button
-                        onClick={toggleDarkMode}
-                        className="p-2 rounded-full hover:bg-secondary transition-colors"
-                        aria-label="Toggle dark mode"
-                    >
-                        {darkMode ? <Sun size={20}/> : <Moon size={20}/>}
-                    </button>
+                    <SwitchTheme/>
 
                     <button
                         className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium transition-all hover:shadow-md active:scale-95">
