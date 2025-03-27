@@ -27,7 +27,7 @@ const Navbar = () => {
 
                 <nav className="hidden md:flex space-x-8">
                     <NavLink href="/">Home</NavLink>
-                    <NavLink href="/">Convert</NavLink>
+                    <NavLink href="/conversion">Convert</NavLink>
                     <NavLink href="/">Palettes</NavLink>
                     <NavLink href="/">Tools</NavLink>
                     <NavLink href="/about">About</NavLink>

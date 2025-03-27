@@ -24,14 +24,14 @@ export default function RootLayout({
         >
         <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
         >
             <div
                 className="grid grid-rows-[auto_1fr_auto] h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
                 <Navbar/>
-                <main className="flex-1 pt-24 pb-10 container mx-auto px-4 sm:px-6 animate-fade-in">
+                <main className="flex-1 pt-16 pb-10 container mx-auto px-4 sm:px-6 animate-fade-in">
                     {children}
                 </main>
                 <Footer/>
